@@ -1,20 +1,10 @@
-try:
-    from ....psychopy_render import (
-        ImageStimulus,
-        FeedBackStimulus,
-        ActionStimulusTooEarly,
-        BaseStimulus,
-    )
-    from ....stimuli import fixation_cross, mid_stimuli
-
-except ImportError:
-    from rewardgym.psychopy_render import (
-        ImageStimulus,
-        FeedBackStimulus,
-        ActionStimulusTooEarly,
-        BaseStimulus,
-    )
-    from rewardgym.stimuli import fixation_cross, mid_stimuli
+from rewardgym.psychopy_render import (
+    ImageStimulus,
+    FeedBackStimulus,
+    ActionStimulusTooEarly,
+    BaseStimulus,
+)
+from rewardgym.stimuli import fixation_cross, mid_stimuli
 
 
 def get_psychopy_info(
@@ -61,7 +51,7 @@ def get_psychopy_info(
         ]
 
     final_step = [
-        BaseStimulus(duration=0.001, rl_label="obs"),
+        BaseStimulus(duration=0.001, rl_label="obs", noflip=True),
         reward_feedback,
     ]
 

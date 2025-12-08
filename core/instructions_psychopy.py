@@ -1,14 +1,9 @@
 try:
     from psychopy.visual import ImageStim, TextBox2
 except ModuleNotFoundError:
-    try:
-        from rewardgym.psychopy_render.psychopy_stubs import ImageStim, TextBox2
-    except ModuleNotFoundError:
-        from ....psychopy_render.psychopy_stubs import ImageStim, TextBox2
-try:
-    from ....stimuli import mid_stimuli
-except ImportError:
-    from rewardgym.stimuli import mid_stimuli
+    from rewardgym.psychopy_render.psychopy_stubs import ImageStim, TextBox2
+
+from rewardgym.stimuli import mid_stimuli
 
 import json
 import pathlib
@@ -23,7 +18,7 @@ def instructions_psychopy(instructions=instructions):
     size = (125, 125)
 
     def part_0(win, instructions, size=size):
-        left_pos = [-260, -135, 0, 135, 260]
+        left_pos = [-265, -135, 0, 135, 265]
 
         part_0_0 = TextBox2(
             win=win,

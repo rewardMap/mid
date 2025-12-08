@@ -1,7 +1,4 @@
-try:
-    from rewardgym.utils import check_random_state
-except ImportError:
-    from ....utils import check_random_state
+from rewardgym.utils import check_random_state
 
 
 def get_configs(stimulus_set: str = "1", use_abcd=True):

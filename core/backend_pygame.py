@@ -1,13 +1,9 @@
-try:
-    from ....pygame_render import BaseDisplay, BaseText, TimedAction, feedback_block
-except ImportError:
-    from rewardgym.pygame_render import (
-        BaseDisplay,
-        BaseText,
-        TimedAction,
-        feedback_block,
-    )
-
+from rewardgym.pygame_render import (
+    BaseDisplay,
+    BaseText,
+    TimedAction,
+    feedback_block,
+)
 
 def get_pygame_info(action_map, window_size=256):
     base_position = (window_size // 2, window_size // 2)
