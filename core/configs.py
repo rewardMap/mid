@@ -83,5 +83,3 @@ def get_configs(stimulus_set: str = "1", use_abcd=True):
     }
 
     return config
-
-    return config

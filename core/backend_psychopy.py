@@ -51,7 +51,7 @@ def get_psychopy_info(
         ]
 
     final_step = [
-        BaseStimulus(duration=0.001, rl_label="obs", noflip=True),
+        BaseStimulus(duration=None, rl_label="obs", noflip=True),
         reward_feedback,
     ]
 
