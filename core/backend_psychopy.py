@@ -5,6 +5,8 @@ from rewardgym.psychopy_render import (
     BaseStimulus,
 )
 from rewardgym.stimuli import fixation_cross, mid_stimuli
+from rewardgym.render.passive_routines import PresentationRoutine, FeedBackRoutine
+from rewardgym.render import ImageDefinition
 
 
 def get_psychopy_info(
@@ -14,16 +16,17 @@ def get_psychopy_info(
     fullpoints=None,
     **kwargs,
 ):
-    reward_feedback = FeedBackStimulus(
-        2.0, text="{0}", target="reward", name="reward", bar_total=fullpoints, rl_label="reward"
+
+    reward_feedback = FeedBackRoutine(
+        duration=2.0, name="reward", bar_total=fullpoints, rl_label="reward"
     )
 
-    fix_isi = ImageStimulus(
-        image_paths=[fixation_cross()],
+
+    fix_isi = PresentationRoutine(
+        stimulus_definitions=[ImageDefinition(name='fixation', autoDraw=False, image=fixation_cross())],
         duration=1.5,
         name="isi",
-        autodraw=False,
-        wait_no_keys=True,
+        poll_keys=True,
     )
 
     action_stim = ActionStimulusTooEarly(
@@ -32,26 +35,36 @@ def get_psychopy_info(
 
     def first_step(img, img2):
         return [
-            ImageStimulus(
+            PresentationRoutine(
                 duration=2.0,
-                image_paths=[img],
-                positions=[(0, 0)],
+                stimulus_definitions=[
+                    ImageDefinition(
+                        pos=(0, 0),
+                        name="cue",
+                        image=img
+                    )
+                ],
                 name="cue",
                 rl_label="obs",
             ),
             fix_isi,
-            ImageStimulus(
+            PresentationRoutine(
                 duration=0.01,
-                image_paths=[img2],
-                positions=[(0, 0)],
+                stimulus_definitions=[
+                    ImageDefinition(
+                        pos=(0, 0),
+                        name="cue",
+                        image=img2
+                    )
+                ],
                 name="target",
-                wait_no_keys=True,
+                poll_keys=True,
             ),
             action_stim,
         ]
 
     final_step = [
-        BaseStimulus(duration=None, rl_label="obs", noflip=True),
+        PresentationRoutine(duration=None, rl_label="obs", flip=False),
         reward_feedback,
     ]
 
