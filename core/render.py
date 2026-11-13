@@ -1,17 +1,19 @@
-from rewardgym.stimuli import fixation_cross, mid_stimuli
-from rewardgym.render.passive_routines import PresentationRoutine, FeedBackRoutine
 from rewardgym.render import ImageDefinition
+from rewardgym.render.passive_routines import FeedBackRoutine, PresentationRoutine
 from rewardgym.render.response_routines import ActionRoutine
+from rewardgym.stimuli import fixation_cross, mid_stimuli
 
 
 def get_render_info(
     random_state=111,
-    key_dict={"left": 0, "right": 1, "space": 0},
+    key_dict=None,
     external_stimuli=None,
     fullpoints=None,
     **kwargs,
 ):
 
+    if key_dict is None:
+        key_dict = {"left": 0, "right": 1, "space": 0}
     reward_feedback = FeedBackRoutine(
         duration=2.0, name="reward", bar_total=fullpoints, rl_label="reward"
     )

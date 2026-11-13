@@ -3,10 +3,10 @@ try:
 except ModuleNotFoundError:
     from rewardgym.psychopy_render.psychopy_stubs import ImageStim, TextBox2
 
-from rewardgym.stimuli import mid_stimuli
-
 import json
 import pathlib
+
+from rewardgym.stimuli import mid_stimuli
 
 instructions_path = (
     pathlib.Path(__file__).parent.resolve() / "assets" / "instructions_en.json"
