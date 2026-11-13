@@ -1,7 +1,7 @@
 from rewardgym.render import ImageDefinition
 from rewardgym.render.routines import FeedBackRoutine, PresentationRoutine
 from rewardgym.render.routines import ActionRoutine
-from rewardgym.stimuli import fixation_cross, mid_stimuli
+from rewardgym.render.stimuli import fixation_cross, mid_stimuli
 
 
 def get_render_info(

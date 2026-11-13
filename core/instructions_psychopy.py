@@ -6,7 +6,7 @@ except ModuleNotFoundError:
 import json
 import pathlib
 
-from rewardgym.stimuli import mid_stimuli
+from rewardgym.render.stimuli import mid_stimuli
 
 instructions_path = (
     pathlib.Path(__file__).parent.resolve() / "assets" / "instructions_en.json"
