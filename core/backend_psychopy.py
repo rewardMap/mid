@@ -1,17 +1,12 @@
-from rewardgym.psychopy_render import (
-    ImageStimulus,
-    FeedBackStimulus,
-    ActionStimulusTooEarly,
-    BaseStimulus,
-)
 from rewardgym.stimuli import fixation_cross, mid_stimuli
 from rewardgym.render.passive_routines import PresentationRoutine, FeedBackRoutine
 from rewardgym.render import ImageDefinition
+from rewardgym.render.response_routines import ActionRoutine
 
 
 def get_psychopy_info(
     random_state=111,
-    key_dict={"left": 0, "right": 1},
+    key_dict={"left": 0, "right": 1, "space": 0},
     external_stimuli=None,
     fullpoints=None,
     **kwargs,
@@ -26,11 +21,12 @@ def get_psychopy_info(
         stimulus_definitions=[ImageDefinition(name='fixation', autoDraw=False, image=fixation_cross())],
         duration=1.5,
         name="isi",
-        poll_keys=True,
+        poll_keys=False,
     )
 
-    action_stim = ActionStimulusTooEarly(
-        duration=0.35, timeout_action=1, key_dict=key_dict, rl_label="action",
+    action_stim = ActionRoutine(
+        name="action",
+        duration=0.35, timeout_action=1, too_early_action=1, key_dict=key_dict, rl_label="action", detect_too_early=True
     )
 
     def first_step(img, img2):
@@ -58,7 +54,7 @@ def get_psychopy_info(
                     )
                 ],
                 name="target",
-                poll_keys=True,
+                poll_keys=False,
             ),
             action_stim,
         ]
