@@ -4,7 +4,7 @@ from rewardgym.render import ImageDefinition
 from rewardgym.render.response_routines import ActionRoutine
 
 
-def get_psychopy_info(
+def get_render_info(
     random_state=111,
     key_dict={"left": 0, "right": 1, "space": 0},
     external_stimuli=None,
@@ -66,40 +66,40 @@ def get_psychopy_info(
 
     info_dict = {
         1: {
-            "psychopy": first_step(
+            "render": first_step(
                 mid_stimuli("-5", shape="square", probe=False),
                 mid_stimuli("-5", shape="square", probe=True),
             )
         },  # big lose
         2: {
-            "psychopy": first_step(
+            "render": first_step(
                 mid_stimuli("-1", shape="square", probe=False),
                 mid_stimuli("-1", shape="square", probe=True),
             )
         },  # small lose
         3: {
-            "psychopy": first_step(
+            "render": first_step(
                 mid_stimuli("0", shape="triangle_u", probe=False),
                 mid_stimuli("0", shape="triangle_u", probe=True),
             )
         },  # control
         4: {
-            "psychopy": first_step(
+            "render": first_step(
                 mid_stimuli("+1", shape="circle", probe=False),
                 mid_stimuli("+1", shape="circle", probe=True),
             )
         },  # small win
         5: {
-            "psychopy": first_step(
+            "render": first_step(
                 mid_stimuli("+5", shape="circle", probe=False),
                 mid_stimuli("+5", shape="circle", probe=True),
             )
         },  # big win
-        6: {"psychopy": final_step},
-        7: {"psychopy": final_step},
-        8: {"psychopy": final_step},
-        9: {"psychopy": final_step},
-        10: {"psychopy": final_step},
+        6: {"render": final_step},
+        7: {"render": final_step},
+        8: {"render": final_step},
+        9: {"render": final_step},
+        10: {"render": final_step},
     }
 
     return info_dict, None
