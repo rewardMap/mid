@@ -1,6 +1,6 @@
 from rewardgym.render import ImageDefinition
-from rewardgym.render.passive_routines import FeedBackRoutine, PresentationRoutine
-from rewardgym.render.response_routines import ActionRoutine
+from rewardgym.render.routines import FeedBackRoutine, PresentationRoutine
+from rewardgym.render.routines import ActionRoutine
 from rewardgym.stimuli import fixation_cross, mid_stimuli
 
 
