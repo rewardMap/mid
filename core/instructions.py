@@ -2,10 +2,9 @@ import json
 import pathlib
 
 from rewardgym.render.routines.passive_routines import InstructionRoutine
-from rewardgym.render.stimulus_definitions import TextDefinition, ImageDefinition
-from rewardgym.utils import NameCounter
-
 from rewardgym.render.stimuli import mid_stimuli
+from rewardgym.render.stimulus_definitions import ImageDefinition, TextDefinition
+from rewardgym.utils import NameCounter
 
 instructions_path = (
     pathlib.Path(__file__).parent.resolve() / "assets" / "instructions_en.json"
